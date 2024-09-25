@@ -1,0 +1,16 @@
+filebeat.inputs:
+  - type: log
+    enabled: true
+    exclude_files: ['\.gz$']
+    encoding: utf-8
+    scan_frequency: 10s
+    json:
+        add_error_key: true
+        keys_under_root: true
+        overwrite_keys: true
+    paths:
+      - /ELK-demo/log/*.log
+
+output.logstash:
+  hosts: ["logstash:5044"]
+  ssl.enabled: false
